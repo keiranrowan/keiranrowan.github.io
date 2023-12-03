@@ -1,1 +1,77 @@
-Hello World
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie-edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Keiran Rowan</title>
+        <link rel="stylesheet" href="css/jquery.terminal-2.37.2.min.css" />
+        <style>
+            body {
+                margin: 0;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="term" style="z-index: 0; overflow-y: hidden, overflow-x: hidden;">
+        <img src="img/800x600a.gif" style="position:fixed;bottom:0px;left:0px;z-index:9999"/>
+        <img src="img/pepsi.gif" style="position:fixed;bottom:0px;left:88px;z-index:9999"/>
+        <img src="img/nocookie.gif" style="position:fixed;bottom:0px;left:188px;z-index:9999"/>
+        <img src="img/penguins.gif" style="position:fixed;bottom:0px;left:276px;z-index:9999"/>
+        <img src="img/phonechump.gif" style="position:fixed;bottom:0px;left:364px;z-index:9999"/>
+        <img src="img/best_ns.gif" style="position:fixed;bottom:0px;left:452px;z-index:9999"/>
+        <img src="img/imissxp.gif" style="position:fixed;bottom:0px;left:540px;z-index:9999"/>
+        <script src="js/jquery.min.js"></script>
+        <script src="js/jquery.terminal-2.37.2.min.js"></script>
+        <script>
+        jQuery(function($, undefined) {
+        $('#term').terminal(function(command) {
+            args = command.split(" ");
+            switch(args[0]) {
+                case 'help':
+                    this.echo('');
+                    this.echo('[[;white;black]\[ Commands \]]');
+                    this.echo('projects - Lists the project I am working on');
+                    this.echo('github   - Opens my GitHub page in a new window');
+                    this.echo('docker   - Opens my Docker Hub page in a new window');
+                    this.echo('linkedin - Opens my LinkedIn page in a new window');
+                    this.echo('');
+                    break;
+                case 'github':
+                    window.open("http://www.github.com/keiranrowan");
+                    break;
+                case 'linkedin':
+                    window.open("http://www.linkedin.com/in/keiranrowan");
+                case 'docker':
+                    window.open("https://hub.docker.com/u/keiranrowan");
+                case 'time':
+                    var today = new Date();
+                    var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+                    this.echo(time);
+                    break;
+                case 'prompt':
+                    this.set_prompt("[[b;white;black]"+args[1]+"] ");
+                    break;
+                default:
+                    this.echo('Invalid Command! Type \'help\' for a list of commands.');
+            }
+        }, {
+            greetings: function(){
+                this.echo(
+                '[[b;blue;black]██╗  ██╗███████╗██╗     ██╗      ██████╗ ██╗]\n' +
+                '[[b;blue;black]██║  ██║██╔════╝██║     ██║     ██╔═══██╗██║]\n' +
+                '[[b;blue;black]███████║█████╗  ██║     ██║     ██║   ██║██║]\n' +
+                '[[b;blue;black]██╔══██║██╔══╝  ██║     ██║     ██║   ██║╚═╝]\n' +
+                '[[b;blue;black]██║  ██║███████╗███████╗███████╗╚██████╔╝██╗]\n' +
+                '[[b;blue;black]╚═╝  ╚═╝╚══════╝╚══════╝╚══════╝ ╚═════╝ ╚═╝]\n'+
+                '[[b;white;black]Welcome to Keiran\'s Page! For commands type:] [[b;red;black]\'help\']');
+                this.echo();
+            },
+            name: 'js_demo',
+            height: window.innerHeight,
+            prompt: '[[b;white;black]$] '
+        });
+    });
+       </script>
+    </body>
+ </html>
